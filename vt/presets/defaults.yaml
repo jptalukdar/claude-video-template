@@ -1,0 +1,19 @@
+# Global defaults. Override per project in <project>/presets/defaults.yaml or the spec's `defaults:` block.
+dur: 2.5          # overlay duration when no `to:` is given (s)
+anim: fade        # animation preset (animations.yaml)
+style: caption    # text style preset (styles.yaml)
+pos: bc           # tl tc tr ml c mr bl bc br | "x,y" centre in frame fractions
+margin: 0.05      # safe margin, fraction of frame height
+stack: auto       # auto | none — auto-stack overlapping items that share a pos
+gap: 0.015        # stacking gap, fraction of frame height
+fit: none         # none | cover | contain (images/clips)
+op: 1.0           # opacity
+img_w: 0.35       # default image width (fraction of frame width) when no w/h/scale/fit
+font: sans-bold   # font id from assets.yaml, a font file, or sans | sans-bold | serif | mono
+tr: none          # intro/outro transition: none | any ffmpeg xfade name (fade, slideleft, wipeleft, dissolve, ...)
+trd: 0.5          # transition duration (s)
+card_dur: 3.0     # intro/outro image card duration (s)
+card_bg: "#000000"
+frame_tr: 0.4     # frame (base video move) ease-in/out duration
+model: small      # faster-whisper model
+lang: null        # null = auto-detect

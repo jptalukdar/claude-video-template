@@ -179,3 +179,19 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+# ---- vt: project data is never tracked (code only) ----
+/projects/
+/examples/
+vt.local.toml
+.vt/
+.vt-active
+.vt-batch.log
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.m4v
+*.avi
+*.wav
+*.mp3
+*.m4a

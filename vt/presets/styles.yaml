@@ -1,0 +1,14 @@
+# Named text styles. Sizes are fractions of output frame height, so styles work at any resolution.
+# keys: font size color stroke stroke_color shadow (#RRGGBBAA) box (#RRGGBBAA) pad radius align (l c r)
+#       max_w (fraction of frame width) upper line_gap
+#       sub: {size color font upper above}  -> second line from the item's `sub:` field
+caption: {size: 0.05, color: "#FFFFFF", box: "#000000B0", pad: 0.4, radius: 0.25, align: c, max_w: 0.8}
+title:   {size: 0.085, color: "#FFFFFF", stroke: 0.06, stroke_color: "#000000", shadow: "#00000099", align: c, max_w: 0.9}
+big:     {size: 0.13, color: "#FFD400", stroke: 0.07, stroke_color: "#000000", shadow: "#000000AA", align: c, max_w: 0.9, upper: true}
+lower3:  {size: 0.05, color: "#FFFFFF", box: "#101820D8", pad: 0.45, radius: 0.15, align: l, max_w: 0.6,
+          sub: {size: 0.032, color: "#FFD400", above: false}}
+place:   {size: 0.075, color: "#FFFFFF", shadow: "#000000B0", align: l, max_w: 0.6,
+          sub: {size: 0.04, color: "#FFFFFF", above: true}}
+tag:     {size: 0.04, color: "#111111", box: "#FFD400", pad: 0.35, radius: 0.5, align: c}
+fine:    {size: 0.034, color: "#FFFFFF", shadow: "#00000080", align: r}
+card:    {size: 0.05, color: "#FFFFFF", align: c, max_w: 0.85}

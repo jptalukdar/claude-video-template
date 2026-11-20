@@ -1,0 +1,24 @@
+# Named animations. Phases: in / out (entry/exit, d = seconds) and during (whole visible span).
+# in/out types: fade | slide (from: l r u d, dist: fraction of frame, null = offscreen) | zoom (from: scale) | none
+#   a phase may combine: {fade: true, slide: {...}} via `fade: true` on slide/zoom phases.
+# during types: zoom (from,to) | pan (dx, dy: fraction of frame — crops when fit: cover, else moves)
+# ease: linear | in | out | inout | back
+none: {}
+fade:     {in: {type: fade, d: 0.4}, out: {type: fade, d: 0.4}}
+cross:    {in: {type: fade, d: 0.35}, out: {type: fade, d: 0.35}}
+quick:    {in: {type: fade, d: 0.15}, out: {type: fade, d: 0.15}}
+rise:     {in: {type: slide, from: d, dist: 0.04, d: 0.45, ease: out, fade: true}, out: {type: fade, d: 0.3}}
+slide_l:  {in: {type: slide, from: l, d: 0.5, ease: out}, out: {type: slide, from: l, d: 0.4, ease: in}}
+slide_r:  {in: {type: slide, from: r, d: 0.5, ease: out}, out: {type: slide, from: r, d: 0.4, ease: in}}
+slide_u:  {in: {type: slide, from: u, d: 0.5, ease: out}, out: {type: slide, from: u, d: 0.4, ease: in}}
+slide_d:  {in: {type: slide, from: d, d: 0.5, ease: out}, out: {type: slide, from: d, d: 0.4, ease: in}}
+nudge_l:  {in: {type: slide, from: l, dist: 0.05, d: 0.45, ease: out, fade: true}, out: {type: fade, d: 0.3}}
+nudge_r:  {in: {type: slide, from: r, dist: 0.05, d: 0.45, ease: out, fade: true}, out: {type: fade, d: 0.3}}
+zoom_in:  {in: {type: zoom, from: 0.6, d: 0.5, ease: out, fade: true}, out: {type: fade, d: 0.3}}
+pop:      {in: {type: zoom, from: 0.3, d: 0.45, ease: back, fade: true}, out: {type: zoom, from: 0.6, d: 0.25, ease: in, fade: true}}
+ken_burns: {in: {type: fade, d: 0.4}, out: {type: fade, d: 0.4}, during: {type: zoom, from: 1.0, to: 1.12}}
+zoom_slow: {in: {type: fade, d: 0.4}, out: {type: fade, d: 0.4}, during: {type: zoom, from: 1.0, to: 1.06}}
+pan_l:    {in: {type: fade, d: 0.4}, out: {type: fade, d: 0.4}, during: {type: pan, dx: -0.08}}
+pan_r:    {in: {type: fade, d: 0.4}, out: {type: fade, d: 0.4}, during: {type: pan, dx: 0.08}}
+pan_u:    {in: {type: fade, d: 0.4}, out: {type: fade, d: 0.4}, during: {type: pan, dy: -0.08}}
+pan_d:    {in: {type: fade, d: 0.4}, out: {type: fade, d: 0.4}, during: {type: pan, dy: 0.08}}
