@@ -12,7 +12,7 @@ from pathlib import Path
 from .translit import is_latin, skeleton, to_latin
 from .util import VtError, fmt_t, norm_word, read_json, write_json
 
-END_PUNCT = re.compile(r"[.?!…]['\")\]]*$")
+END_PUNCT = re.compile(r"[.?!…।॥？！。]['\")\]]*$")  # incl. Devanagari danda, CJK stops
 
 
 def compress(words: list, gap: float = 0.7, max_words: int = 25) -> list[list]:

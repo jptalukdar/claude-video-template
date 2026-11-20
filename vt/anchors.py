@@ -59,6 +59,7 @@ def parse_anchor(a) -> Anchor:
         # (quote phrases that themselves end in a number, e.g. 'covid-19')
         if head and (head[-1] in "'\"" or SENT_RE.match(head) or REF_RE.match(head) or OCC_RE.match(head)
                      or head in ("start", "end", "next") or head.startswith("@") or SPHRASE_RE.match(head)
+                     or re.search(r"\.(start|end)$", head)
                      or re.fullmatch(r"[^\W\d_][\w']*", head)):
             off = float(m.group(1).replace(" ", ""))
             s = head

@@ -192,7 +192,16 @@ def patch(proj: Project, ops: list[list[str]]) -> list[str]:
         for p in old[:-MAX_HISTORY]:
             p.unlink()
     dump_yaml(spec, proj.spec_path)
+    _stamp_transcript(proj)
     return [t for t in touched if t]
+
+
+def _stamp_transcript(proj: Project) -> None:
+    """Remember which transcript the spec was last edited against (S-ids shift on re-transcription)."""
+    from .util import read_json
+    w = read_json(proj.cache / "words.json")
+    if w:
+        (proj.cache / "spec_tkey").write_text(w["key"], encoding="utf-8")
 
 
 def undo(proj: Project) -> bool:

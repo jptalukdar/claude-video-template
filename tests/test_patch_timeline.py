@@ -88,3 +88,15 @@ def test_graph_compiles_each_anim(proj, anim):
         assert "zoompan" in s
     if anim in ("zoom_in", "pop"):
         assert "eval=frame" in s
+
+
+def test_warns_when_transcript_changes_after_patch(proj):
+    import json
+    patch(proj, ops("add e1 at=S2 text=Hi"))
+    assert not any(w == "spec" for _, w, _ in build(proj).msgs.warnings)
+    d = json.loads((proj.cache / "words.json").read_text(encoding="utf-8"))
+    d["key"] = "new"
+    (proj.cache / "words.json").write_text(json.dumps(d), encoding="utf-8")
+    assert any(w == "spec" and "S-ids" in m for _, w, m in build(proj).msgs.warnings)
+    patch(proj, ops("set e1 off=0"))
+    assert not any(w == "spec" for _, w, _ in build(proj).msgs.warnings)

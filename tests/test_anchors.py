@@ -26,6 +26,7 @@ def R(tr, **kw):
     ("e1.end+0.5", "ref", {"ref": "e1", "edge": "end", "off": 0.5}),
     ("S4:bajaj.start-0.2", "phrase", {"edge": "start", "off": -0.2}),
     ("S3-0.35", "sent", {"off": -0.35}),
+    ("'apply now'.start-0.55", "phrase", {"phrase": "apply now", "edge": "start", "off": -0.55}),
     ("'covid-19'", "phrase", {"phrase": "covid-19", "off": 0.0}),
     ("start", "kw", {"edge": "start"}),
     ("next", "next", {}),

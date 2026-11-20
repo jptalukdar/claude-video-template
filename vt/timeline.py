@@ -195,8 +195,12 @@ def build(proj: Project, preview: bool = False, need_transcript: bool = True) ->
     try:
         tr = Transcript.load(proj.cache)
     except VtError:
-        if need_transcript:
-            pass  # anchors that need it will report errors
+        pass  # anchors that need it will report errors
+    tk = proj.cache / "spec_tkey"
+    wk = (read_json(proj.cache / "words.json") or {}).get("key")
+    if tk.exists() and wk and tk.read_text(encoding="utf-8").strip() != wk:
+        msgs.warn("spec", "transcript changed since last patch: S-ids may have shifted (vt transcript; "
+                          "any patch clears this)")
     offset = float(spec.get("offset") or 0)
 
     # ---- trim
